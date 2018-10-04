@@ -56,6 +56,34 @@ class ScratchTest extends TestCase
 
     /**
      * @test
+     * @dataProvider palindromes
+     */
+    public function it_checks_the_palindrome_word($word, $isPalindrome)
+    {
+        $this->assertEquals(
+            $isPalindrome,
+            $this->scratch->isPalindrome($word)
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function palindromes(): array
+    {
+        return [
+            ['racecar', true],
+            ['madam', true],
+            ['deleveled', true],
+            ['10201', true],
+            ['horse', false],
+            ['chicken', false],
+            ['people', false],
+        ];
+    }
+
+    /**
+     * @test
      *
      * @dataProvider cypherResults
      * @param $shift
@@ -102,5 +130,4 @@ class ScratchTest extends TestCase
             [25, 'BZDRZQ'],
         ];
     }
-
 }

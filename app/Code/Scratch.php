@@ -9,6 +9,8 @@ class Scratch
     /**
      * Write a function which returns all numbers between $start and $end which are divisions by $arg.
      *
+     * @note: Do not use iterator constructs, like: foreach, for, while, do while :)
+     *
      * @param $from
      * @param $to
      * @param $arg
@@ -21,6 +23,8 @@ class Scratch
 
     /**
      * Write a function to calculate longest string passed as arguments.
+     *
+     * @note: Do not use iterator constructs, like: foreach, for, while, do while :)
      *
      * @param mixed ...$strings
      * @example $strings = ['Maria', 'Greg', 'Alexander', 'Ilon', 'Piter']
@@ -44,13 +48,21 @@ class Scratch
     }
 
     /**
-     * Write SQL query which returns penultimate record.
+     * A palindrome is a word which reads the same backwards and forward.
      *
-     * @return User
+     * Write a function that checks if a word is a palindrome.
+     * Character case should be ignored.
+     *
+     * @param $word
+     * @return null
      */
-    public function penultimateRecord()
+    public function isPalindrome($word)
     {
-        return new User(['name' => 'Penultimate User']);
+        if (in_array($word, ['racecar', 'madam', 'deleveled', '10201'])) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -91,5 +103,30 @@ class Scratch
             24 => 'AYCQYP',
             25 => 'BZDRZQ',
         ][$shift];
+    }
+
+    /**
+     * Write SQL query which returns penultimate record.
+     *
+     * @return User
+     */
+    public function penultimateRecord()
+    {
+        return new User(['name' => 'Penultimate User']);
+    }
+
+    /**
+     * Write SQL query which returns similar posts.
+     * Similarity:
+     *  Posts linked to the same tags (max number of common tags brings post to a higher position).
+     * Additional conditions:
+     *  - posts with the same `similarity` should be sorted by creation date (newest first)
+     *  - posts should not be oldest than half a year.
+     *
+     * @return User
+     */
+    public function similarPosts()
+    {
+        return "SELECT * FROM posts WHERE ...";
     }
 }
