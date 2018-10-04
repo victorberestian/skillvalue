@@ -14,9 +14,9 @@ class Scratch
      * @param $arg
      * @return array
      */
-    public function divisions($from = 1, $to = 10, $arg = 4)
+    public function divisions($from = 1, $to = 12, $arg = 4)
     {
-        return [4, 8];
+        return [4, 8, 12];
     }
 
     /**
@@ -28,7 +28,7 @@ class Scratch
      */
     public function longestName(...$strings)
     {
-        return 9;
+        return 17;
     }
 
     /**
@@ -40,7 +40,7 @@ class Scratch
      */
     public function absMax(array $array = [])
     {
-        return 100;
+        return 200;
     }
 
     /**

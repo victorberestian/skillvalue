@@ -24,21 +24,21 @@ class ScratchTest extends TestCase
     /** @test */
     public function it_shows_the_dividers_of_integer()
     {
-        $this->assertEquals([4, 8], $this->scratch->divisions(1, 10, 4));
+        $this->assertEquals([4, 8, 12], $this->scratch->divisions(1, 12, 4));
     }
 
     /** @test */
     public function it_shows_the_longest_string_length()
     {
-        $longest = 'Alexander';
+        $longest = 'Test+Тестирование';
 
-        $this->assertEquals(strlen($longest), $this->scratch->longestName('Maria', 'Greg', $longest, 'Ilon', 'Piter'));
+        $this->assertEquals(mb_strlen($longest), $this->scratch->longestName('Maria', 'Greg', $longest, 'Ilon', 'Piter'));
     }
 
     /** @test */
     public function it_returns_abs_max_of_an_array()
     {
-        $this->assertEquals(100, $this->scratch->absMax([10, 12, 1, [50, 45, 18], [22, 15, 100]]));
+        $this->assertEquals(200, $this->scratch->absMax([10, [200, 100], 1, [50, 45, 18], [22, 15, 101]]));
     }
 
     /** @test */
