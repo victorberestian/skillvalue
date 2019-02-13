@@ -11,20 +11,10 @@ class ScratchTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @var Scratch */
-    protected $scratch;
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->scratch = new Scratch;
-    }
-
     /** @test */
     public function it_shows_the_dividers_of_integer()
     {
-        $this->assertEquals([4, 8, 12], $this->scratch->divisions(1, 12, 4));
+        $this->assertEquals([4, 8, 12], Scratch::divisions(1, 12, 4));
     }
 
     /** @test */
@@ -33,13 +23,13 @@ class ScratchTest extends TestCase
         $longest = 'Test+Тестирование';
 
         $this->assertEquals(mb_strlen($longest),
-            $this->scratch->longestName('Maria', 'Greg', $longest, 'Ilon', 'Piter'));
+            Scratch::longestName('Maria', 'Greg', $longest, 'Ilon', 'Piter'));
     }
 
     /** @test */
     public function it_returns_abs_max_of_an_array()
     {
-        $this->assertEquals(200, $this->scratch->absMax([10, [200, 100], 1, [50, 45, 18], [22, 15, 101]]));
+        $this->assertEquals(200, Scratch::absMax([10, [200, 100], 1, [50, 45, 18], [22, 15, 101]]));
     }
 
     /** @test */
@@ -49,7 +39,7 @@ class ScratchTest extends TestCase
         factory(User::class)->create(['name' => $required = 'Penultimate User']);
         factory(User::class)->create(['name' => 'Last User']);
 
-        $user = $this->scratch->penultimateRecord();
+        $user = Scratch::penultimateRecord();
 
         $this->assertEquals(22, User::count());
         $this->assertEquals($user->name, $required);
@@ -63,7 +53,7 @@ class ScratchTest extends TestCase
     {
         $this->assertEquals(
             $isPalindrome,
-            $this->scratch->isPalindrome($word)
+            Scratch::isPalindrome($word)
         );
     }
 
@@ -94,7 +84,7 @@ class ScratchTest extends TestCase
     {
         $this->assertEquals(
             $value,
-            $encoded = $this->scratch->caesarEncoder('CAESAR', $shift)
+            $encoded = Scratch::caesarEncoder('CAESAR', $shift)
         );
     }
 
@@ -103,18 +93,15 @@ class ScratchTest extends TestCase
     {
         $this->assertEquals(
             5,
-            $this->scratch->primeEvenNumber([31, 38, 5, 62, 44, 38, 17, 19, 38, 50, 74])
+            Scratch::primeEvenNumber([31, 38, 5, 62, 44, 38, 17, 19, 38, 50, 74])
         );
 
 //        $this->assertEquals(
 //            3,
-//            $this->scratch->primeEvenNumber([3, 14, 15, 18, 39, 56, 89, 101, 150, 165, 187])
+//            Scratch::primeEvenNumber([3, 14, 15, 18, 39, 56, 89, 101, 150, 165, 187])
 //        );
-//
-//        $this->assertEquals(
-//            "NULL",
-//            $this->scratch->primeEvenNumber([2])
-//        );
+
+//        $this->assertNull(Scratch::primeEvenNumber([2]));
     }
 
     /** @test */
@@ -122,7 +109,7 @@ class ScratchTest extends TestCase
     {
         $this->assertEquals(
             3,
-            $this->scratch->minGates(
+            Scratch::minimumGates(
                 ['9:00', '9:40', '9:50', '11:00', '15:00', '18:00'],
                 ['9:10', '12:00', '11:20', '11:30', '19:00', '20:00']
             )
