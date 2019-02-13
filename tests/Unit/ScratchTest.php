@@ -32,7 +32,8 @@ class ScratchTest extends TestCase
     {
         $longest = 'Test+Тестирование';
 
-        $this->assertEquals(mb_strlen($longest), $this->scratch->longestName('Maria', 'Greg', $longest, 'Ilon', 'Piter'));
+        $this->assertEquals(mb_strlen($longest),
+            $this->scratch->longestName('Maria', 'Greg', $longest, 'Ilon', 'Piter'));
     }
 
     /** @test */
@@ -94,6 +95,37 @@ class ScratchTest extends TestCase
         $this->assertEquals(
             $value,
             $encoded = $this->scratch->caesarEncoder('CAESAR', $shift)
+        );
+    }
+
+    /** @test */
+    public function it_finds_smallest_prime_number_at_even_position()
+    {
+        $this->assertEquals(
+            5,
+            $this->scratch->primeEvenNumber([31, 38, 5, 62, 44, 38, 17, 19, 38, 50, 74])
+        );
+
+//        $this->assertEquals(
+//            3,
+//            $this->scratch->primeEvenNumber([3, 14, 15, 18, 39, 56, 89, 101, 150, 165, 187])
+//        );
+//
+//        $this->assertEquals(
+//            "NULL",
+//            $this->scratch->primeEvenNumber([2])
+//        );
+    }
+
+    /** @test */
+    public function it_finds_a_gates_required()
+    {
+        $this->assertEquals(
+            3,
+            $this->scratch->minGates(
+                ['9:00', '9:40', '9:50', '11:00', '15:00', '18:00'],
+                ['9:10', '12:00', '11:20', '11:30', '19:00', '20:00']
+            )
         );
     }
 
