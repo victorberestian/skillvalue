@@ -18,11 +18,9 @@ class Scratch
      */
     public static function divisions($from = 1, $to = 12, $arg = 4)
     {
-        $result = [4, 8, 12];
-
-        /* YOUR CODE HERE */
-
-        return $result;
+        return array_values(array_filter(range($from, $to), static function (int $num) use ($arg) {
+            return ($num % $arg) === 0;
+        }));
     }
 
     /**
@@ -36,11 +34,7 @@ class Scratch
      */
     public static function longestName(...$strings)
     {
-        $longest = 17;
-
-        /* YOUR CODE HERE */
-
-        return $longest;
+        return max(array_map('mb_strlen', $strings));
     }
 
     /**
@@ -52,9 +46,10 @@ class Scratch
      */
     public static function absMax(array $array = [])
     {
-        $max = 200;
-
-        /* YOUR CODE HERE */
+        $max = 0;
+        array_walk_recursive($array, static function (int $num) use (&$max) {
+            if ($num > $max) $max = $num;
+        });
 
         return $max;
     }
@@ -70,13 +65,9 @@ class Scratch
      */
     public static function isPalindrome($word)
     {
-        /* YOUR CODE HERE */
+        $word = strtolower($word);
 
-        if (in_array($word, ['racecar', 'madam', 'deleveled', '10201'])) {
-            return true;
-        }
-
-        return false;
+        return strrev($word) === $word;
     }
 
     /**
