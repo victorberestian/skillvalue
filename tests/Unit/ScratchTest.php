@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ScratchTest extends TestCase
 {
-    use RefreshDatabase;
+//    use RefreshDatabase;
 
     /** @test */
     public function it_shows_the_dividers_of_integer()
